@@ -2,9 +2,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'mysite/style.css' %}"/>
+    <style type="text/css">
+        body{
+            background-image:url({% static 'mysite/images/backgroud.jpg' %});
+            background-position:top;
+            background-repeat:no-repeat;
+    
+        }
+        h1{color:#000; text-align:center;}
+        p
+        {font-family:"Verdana"; font-size:12px; color:#000; text-align:center;line-height:15px;}
+    </style>
 </head>
 <body>
-	{% block body %}
-	{% endblock %}
+
+	<div class="header">
+
+		<div class="navigation">
+
+            <div class="navigation-logo">
+                <a href="{% url 'mysite:index' %}"><img src="{% static 'mysite/images/logo_briz.jpg' %}" alt="BRIZ.no"></a>
+            </div>
+            <div class="navigation-media">
+                <a href="https://www.instagram.com/briz.no/" target="_blank">
+                    <img src="{% static 'mysite/images/Active-Instagram-3-icon.png' %}"
+                         style="width: 32px; height: 32px; margin-top: 3px;"/>
+                </a>
+                <a href="http:///www.facebook.com/BRIZnorge" target="_blank">
+                    <img src="{% static 'mysite/images/social-facebook-box-blue-icon.png' %}" style="width: 37px; height: 37px;"/>
+                </a>
+            </div>            
+            <div class="navigation-menu">
+                <nav class="navbar navbar-black">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="{% url 'mysite:index' %}">Hjem</a></li>
+                                <li><a href="#">Dress</a></li>
+                                <li><a href="#">Seremoni</a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                       aria-expanded="false">Produkter <span class="caret"></span></a>
+                                    <ul class="dropdown-menu dropdown-menu-black" role="menu">
+                                        <li><a href="#">Skjorte</a></li>
+                                        <li><a href="#">Sko</a></li>
+                                        <li><a href="#">Smoking</a></li>
+                                        <li><a href="#">Slips</a></li>
+                                        <li><a href="#">Sløyfe</a></li>
+                                        <li><a href="#">Mansjett</a></li>
+                                    </ul>
+                                </li>
+
+                                <li><a href="{% url 'mysite:contact' %}">Om oss</a></li>
+
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                       aria-expanded="false">Dress Tips<span class="caret"></span></a>
+                                    <ul class="dropdown-menu  dropdown-menu-black" role="menu">
+                                        <li><a href="#">Slik skal dressen sitte</a></li>
+                                        <li><a href="#">Dress Guide for menn</a></li>
+                                        <li><a href="#">10 Tips til bryllupet</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+        </div>
+
+	</div>
+
+	<div class="index-wrapper">
+		{% block body %}
+		{% endblock %}
+	</div>
+
+	<div class="footer">
+		<div class="copy">
+        	&#169;Copyright <a href="http://briz.no" target="_blank" style="font-family: Broadway;">BRIZ</a> 2008-{% now "Y" %}.
+        	All Rights Reserved.
+    	</div>
+	</div>
 </body>
