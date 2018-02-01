@@ -6,3 +6,11 @@ def index(request):
 def contact(request):
 	return render(request, 'mysite/contact.html', {})
 
+def tips(request):
+	return render(request, 'mysite/tips.html', {})
+
+def dressen_sitte(request):
+	return render(request, 'mysite/dressen_sitte.html', {})
+
+def dress_guide(request):
+	return render(request, 'mysite/dress_guide.html', {})
