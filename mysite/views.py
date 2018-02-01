@@ -14,3 +14,7 @@ def dressen_sitte(request):
 
 def dress_guide(request):
 	return render(request, 'mysite/dress_guide.html', {})
+
+def collection(request, collection_type):
+	collection_type = collection_type
+	return render(request, 'mysite/collection.html', {'collection_type':collection_type})

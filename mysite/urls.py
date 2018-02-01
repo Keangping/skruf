@@ -19,4 +19,7 @@ urlpatterns = [
 	# /dress-guide-for-menn
 	url(r'^dress-guide-for-menn/$', views.dress_guide, name='dress_guide'),
 
+	# /collection/<collection_type>
+	url(r'^collection/(?P<collection_type>[a-zA_Z]+)/$', views.collection, name='collection'),
+
 ]
