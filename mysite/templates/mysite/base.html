@@ -44,17 +44,17 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a href="{% url 'mysite:index' %}">Hjem</a></li>
                                 <li><a href="{% url 'mysite:collection' collection_type='dress' %}">Dress</a></li>
-                                <li><a href="#">Seremoni</a></li>
+                                <li><a href="{% url 'mysite:collection' collection_type='seremoni' %}">Seremoni</a></li>
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                        aria-expanded="false">Produkter <span class="caret"></span></a>
                                     <ul class="dropdown-menu dropdown-menu-black" role="menu">
-                                        <li><a href="#">Skjorte</a></li>
-                                        <li><a href="#">Sko</a></li>
-                                        <li><a href="#">Smoking</a></li>
-                                        <li><a href="#">Slips</a></li>
-                                        <li><a href="#">Sløyfe</a></li>
-                                        <li><a href="#">Mansjett</a></li>
+                                        <li><a href="{% url 'mysite:collection' collection_type='skjorte' %}">Skjorte</a></li>
+                                        <li><a href="{% url 'mysite:collection' collection_type='sko' %}">Sko</a></li>
+                                        <li><a href="{% url 'mysite:collection' collection_type='smoking' %}">Smoking</a></li>
+                                        <li><a href="{% url 'mysite:collection' collection_type='slips' %}">Slips</a></li>
+                                        <li><a href="{% url 'mysite:collection' collection_type='mansjett' %}">Sløyfe</a></li>
+                                        <li><a href="{% url 'mysite:collection' collection_type='sloyfe' %}">Mansjett</a></li>
                                     </ul>
                                 </li>
 
