@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponseNotFound
+
+from .models import Collection
 
 def index(request):
 	return render(request, 'mysite/index.html', {})
@@ -15,6 +18,14 @@ def dressen_sitte(request):
 def dress_guide(request):
 	return render(request, 'mysite/dress_guide.html', {})
 
+# collection's model contains 		type_of_collection, collection_content, collection_image.
+# collection's template requires 	collection's image, collection's content, callection_gallery?, matatag? 
 def collection(request, collection_type):
-	collection_type = collection_type
-	return render(request, 'mysite/collection.html', {'collection_type':collection_type})
+	try:
+		collection = Collection.objects.get(type_of_collection=collection_type)
+		# collection_gallery = 
+	except Collection.DoesNotExist:
+		return HttpResponseNotFound('<h1>Cant find collection in database</h1><p>   ***might have to return render instead</p>')
+
+	print(collection)
+	return render(request, 'mysite/collection.html', {'collection':collection})

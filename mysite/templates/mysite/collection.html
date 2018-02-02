@@ -1,5 +1,84 @@
 {% extends 'mysite/base.html' %}
 
 {% block body %}
-	<h1>This is collection for {{ collection_type }}</h1>
+
+<!-- This is collection page which contains three parts, <div class="product-wrapper"></div>
+														
+														<div class="product-news1">
+															<div class="product-news-image1"></div>
+																<a class="arrow left-arrow">This is arrow left</a>
+																<a class="arrow right-arrow">This is arrow right</a>
+																<div class="product-news-image-middle1"></div>
+																	This is collection's image
+
+														<div class="product-content"></div>
+															<div class="product-content-text"></div>
+																This is collection's content
+
+														<div class="product-gallery"></div>
+															<div class="product-gallery-image"></div>
+																loop through products of this collection
+																<div class="image-element"></div>
+																	<div class="image-element-1"></div>
+																		<a></a>
+																			This is product's image
+																	<div class="image-element-2"></div>
+																		<p></p>
+																			This is product's title
+																		<p></p>
+																			This is product's description -->
+
+
+<div class="product-wrapper">
+
+    <div class="product-news1">
+        <div class="product-news-image1">
+            <!-- {% if pre %} -->
+            <a href="#" class="arrow left-arrow"><img
+                    src="#" width="19"
+                    height="36" alt=""/></a>
+            <!-- {% endif %}
+            {% if next %} -->
+            <a href="#" class="arrow right-arrow"><img
+                    src="#"
+                    width="19" height="36" alt=""/></a>
+            <!-- {% endif %} -->
+            <div class="product-news-image-middle1">
+                <img src="{{ collection.collection_image.url }}" alt=""/>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="product-content">
+        <div class="product-content-text">
+            <h1>{{ collection.collection_content }}</h1>
+        </div>
+    </div>
+
+    <div class="product-gallery">
+        <div class="product-gallery-image">
+            <!-- {% for product in gallery %} -->
+                <div class="image-element">
+                    <div class="image-element-1">
+                        <a href="#">
+                            <img class="img-rounded"
+                                 src="#"
+                                 alt="..." />
+                        </a>
+                    </div>
+                    <div class="image-element-2">
+                        <p>This is product title</p>
+                        <br>
+
+                        <p>This is product description</p>
+                    </div>
+
+                </div>
+            <!-- {% endfor %} -->
+        </div>
+    </div>
+   
+</div>
+
 {% endblock %}

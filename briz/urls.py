@@ -20,3 +20,12 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'', include('mysite.urls')),
 ]
+
+# added when i tried to solve cant use image's from database
+# by adding this, we can treat all images in database in folder'media', 
+# but might have to check with pythonanywhere.com again that we have to set the setting like STATIC folder
+from django.conf import settings
+from django.conf.urls.static import static
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
