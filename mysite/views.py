@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseNotFound
 
-from .models import Collection
+from .models import Collection, Dress
+
+# -*- coding: utf-8 -*-
 
 def index(request):
 	return render(request, 'mysite/index.html', {})
@@ -19,7 +21,9 @@ def dress_guide(request):
 	return render(request, 'mysite/dress_guide.html', {})
 
 def detail(request):
-	return render(request, 'mysite/detail.html', {})
+	product = Dress.objects.get(product_name="briz-navy-blå")
+	print(product)
+	return render(request, 'mysite/detail.html', {'product': product})
 
 # collection's model contains 		type_of_collection, collection_content, collection_image.
 # collection's template requires 	collection's image, collection's content, callection_gallery?, matatag? 
