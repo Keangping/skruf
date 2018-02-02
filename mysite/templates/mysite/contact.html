@@ -1,5 +1,45 @@
 {% extends 'mysite/base.html' %}
 
 {% block body %}
-	<h1>This is contact</h1>
+{% load staticfiles %}
+<div class="product-wrapper">
+
+	<div class="product-content-text">
+		<br>
+		<br>
+		<br>
+        	<h1 id="omoss">Om oss</h1>
+        <br>	
+        	<p>Vi har jobbet i Trondheim i 9 år og har bygd opp en ekspertise som få andre i Norge har. Vi har stor kunnskap om dress, formal antrekk, skreddersydd Dress og produksjon av egne kolleksjoner.</p>
+        	<p>Vår skredder stiller ut på verdens største klesmesse Canton Fair i Guangzhou - Kina, så vi jobber med en av de beste i verden. Vi er selv også agent, så vi har muligheter få andre har, både til å produsere i mindre kvantum, og samtidig få kvalitet i verdensklasse. Det er dette som gjør at vi kan være blant de beste på pris og kvalitet. Samtidig som du får akkurat det produktet, passformen, fargen du måtte ønske og stoffkvaliteten som du ønsker og fortjener.</p>
+        	<p>Resultatet er rett og slett - high end kvalitet til folkelige priser!</p>
+        	<p>Visste du at vi ble årets motebutikk i 2012? <ahref="http: www.adressa.no="" nyheter="" trondheim="" article6446849.ece"="" target="_blank">Årets motebutikk 2012</ahref="http:></p>
+        <br>
+        <br>
+    </div>
+
+    <div class="product-news1">
+        <div class="product-news-image1">
+            <div class="product-news-image-middle1">
+                <img src="{% static 'mysite/images/map.png' %}" alt=""/>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="product-content">
+        <div class="product-content-text">
+            <p>Vi tar kun imot kunder etter avtale</p>
+            <p><a href="http://briz.simplybook.me/index/about" target="_blank">Reserver time her.</a></p>
+            <p>Olav Tryggvasons gt 22 - Inngang sammen med Magic Touch frisør.</p>
+            <p>7011. Trondheim Telefon: 977 95 999 * Epost:</p><img src="{% static 'mysite/images/email-pic.png' %}" />
+            <p>Følg oss gjerne på facebook for inspirasjon og nyheter fra oss: <a href="https://www.facebook.com/BRIZnorge" target="_blank">Facebook.com/BRIZnorge</a></p>
+            
+        </div>
+
+        
+    </div>
+   
+</div>
+
 {% endblock %}
