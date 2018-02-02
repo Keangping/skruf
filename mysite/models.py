@@ -2,7 +2,7 @@ from django.db import models
 
 PRODUCT_TYPE_CHOICES = (
 	('dress', 'dress'),
-	('seremoni', 'seremoni'),
+	('brudgom', 'brudgom'),
 	('skjorte', 'skjorte'),
 	('sko', 'sko'),
 	('smoking', 'smoking'),
