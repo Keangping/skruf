@@ -340,7 +340,7 @@ ul.dropdown-menu-black li a {
 }
 
 .product-content-text h1 {
-    font-size: 50px;
+    font-size: 16px;
     font-weight: bolder;
     text-align: center;
     text-decoration: underline;
@@ -359,6 +359,42 @@ ul.dropdown-menu-black li a {
 }
 
 .product-content-text img {
+    display: block;
+
+    width: 94px;
+    height: 17px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+/*this is css for contact*/
+
+.contact-text {
+    margin: auto;
+    width: 600px;
+}
+
+.contact-text h1 {
+    font-size: 50px;
+    font-weight: bolder;
+    text-align: center;
+    text-decoration: underline;
+    line-height: 200%;
+    color: #434343;
+}
+
+.contact-text p {
+    padding-bottom: 11.6px;
+    font-family: "Verdana";
+    font-size: 13.6px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 150%;
+    color: #434343;
+}
+
+.contact-text img {
     display: block;
 
     width: 94px;
