@@ -204,11 +204,6 @@ ul.dropdown-menu-black li a {
     color: #434343;
 }
 
-#omoss {
-    text-align: center;
-    font-size: 50px;
-}
-
 .index-content-text p {
     font-family: "Verdana";
     font-size: 16.6px;
@@ -345,7 +340,7 @@ ul.dropdown-menu-black li a {
 }
 
 .product-content-text h1 {
-    font-size: 16px;
+    font-size: 50px;
     font-weight: bolder;
     text-align: center;
     text-decoration: underline;

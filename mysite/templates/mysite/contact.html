@@ -1,7 +1,7 @@
 {% extends 'mysite/base.html' %}
 
 {% block body %}
-
+{% load staticfiles %}
 <div class="product-wrapper">
 
 	<div class="product-content-text">
@@ -21,7 +21,7 @@
     <div class="product-news1">
         <div class="product-news-image1">
             <div class="product-news-image-middle1">
-                <img src="#" alt=""/>
+                <img src="{% static 'mysite/images/map.png' %}" alt=""/>
             </div>
         </div>
 
@@ -32,7 +32,7 @@
             <p>Vi tar kun imot kunder etter avtale</p>
             <p><a href="http://briz.simplybook.me/index/about" target="_blank">Reserver time her.</a></p>
             <p>Olav Tryggvasons gt 22 - Inngang sammen med Magic Touch frisør.</p>
-            <p>7011. Trondheim Telefon: 977 95 999 * Epost:</p><img src="#" />
+            <p>7011. Trondheim Telefon: 977 95 999 * Epost:</p><img src="{% static 'mysite/images/email-pic.png' %}" />
             <p>Følg oss gjerne på facebook for inspirasjon og nyheter fra oss: <a href="https://www.facebook.com/BRIZnorge" target="_blank">Facebook.com/BRIZnorge</a></p>
             
         </div>
