@@ -18,6 +18,9 @@ def dressen_sitte(request):
 def dress_guide(request):
 	return render(request, 'mysite/dress_guide.html', {})
 
+def detail(request):
+	return render(request, 'mysite/detail.html', {})
+
 # collection's model contains 		type_of_collection, collection_content, collection_image.
 # collection's template requires 	collection's image, collection's content, callection_gallery?, matatag? 
 def collection(request, collection_type):

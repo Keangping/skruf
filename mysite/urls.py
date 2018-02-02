@@ -19,7 +19,12 @@ urlpatterns = [
 	# /dress-guide-for-menn
 	url(r'^dress-guide-for-menn/$', views.dress_guide, name='dress_guide'),
 
-	# /collection/<collection_type>
-	url(r'^collection/(?P<collection_type>[a-zA_Z]+)/$', views.collection, name='collection'),
+	# /<collection_type>/<product_name>, /dress/briz-2-navy **^(?P<collection_type>[a-zA_Z]+)/(?P<product_name>[a-zA_Z]+)/$
+	url(r'^detail/$', views.detail, name='detail'),
+
+	# /<collection_type>, /dress /skjorte
+	url(r'^(?P<collection_type>[a-zA_Z]+)/$', views.collection, name='collection'),
+
+
 
 ]

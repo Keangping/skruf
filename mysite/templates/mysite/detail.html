@@ -1,0 +1,57 @@
+{% extends 'mysite/base.html' %}
+{% block body %}
+{% load staticfiles %}
+<div class="product-wrapper">
+
+    <div class="product-news1">
+        <div class="product-news-image1">
+            <!-- need to fix the arrow, try using index instead of id -->
+            
+            <a href="#" class="arrow left-arrow"><img
+                    src="{% static 'mysite/images/arrow-93-24.png' %}" width="19"
+                    height="36" alt=""/></a>
+            
+            <a href="#" class="arrow right-arrow"><img
+                    src="{% static 'mysite/images/arrow-29-24.png' %}"
+                    width="19" height="36" alt=""/></a>
+            
+            <div class="product-news-image-middle1">
+                <img src="#" alt=""/>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="product-content">
+        <div class="product-content-text">
+            <!-- {{ product.content }} -->
+        </div>
+    </div>
+
+    <div class="product-gallery">
+        <div class="product-gallery-image">
+            <!-- {% for product in gallery %} -->
+                <div class="image-element">
+                    <div class="image-element-1">
+                        <a href="#">
+                            <img class="img-rounded"
+                                 src="#"
+                                 alt="..." />
+                        </a>
+                    </div>
+                    <div class="image-element-2">
+                        <!-- <p>{{ product.title }}</p>
+                        <br>
+
+                        <p>{{ product.content }}</p> -->
+                    </div>
+
+                </div>
+            <!-- {% endfor %} -->
+        </div>
+    </div>
+   
+</div>
+<!-- end wrapper -->
+
+{% endblock %}
