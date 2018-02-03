@@ -5,16 +5,17 @@
 
     <div class="product-news1">
         <div class="product-news-image1">
-            <!-- need to fix the arrow, try using index instead of id -->
-            
-            <a href="#" class="arrow left-arrow"><img
+
+            {% if prev_product %}
+            <a href="{% url 'mysite:detail' product_type=prev_product.product_type product_name=prev_product.product_name %}" class="arrow left-arrow"><img
                     src="{% static 'mysite/images/arrow-93-24.png' %}" width="19"
                     height="36" alt=""/></a>
-            
-            <a href="#" class="arrow right-arrow"><img
+            {% endif %}
+            {% if next_product %}
+            <a href="{% url 'mysite:detail' product_type=next_product.product_type product_name=next_product.product_name %}" class="arrow right-arrow"><img
                     src="{% static 'mysite/images/arrow-29-24.png' %}"
                     width="19" height="36" alt=""/></a>
-            
+            {% endif %}
             <div class="product-news-image-middle1">
                 <img src="{{ product.product_image.url }}" alt=""/>
             </div>
@@ -30,28 +31,28 @@
 
     <div class="product-gallery">
         <div class="product-gallery-image">
-            <!-- {% for product in gallery %} -->
+            {% for product in product_gallery %}
                 <div class="image-element">
                     <div class="image-element-1">
-                        <a href="#">
+                        <a href="{% url 'mysite:detail' product_type=product.product_type product_name=product.product_name %}">
                             <img class="img-rounded"
-                                 src="#"
+                                 src="{{ product.product_image.url }}"
                                  alt="..." />
                         </a>
                     </div>
                     <div class="image-element-2">
-                        <!-- <p>{{ product.title }}</p>
+                        <p>{{ product.product_name }}</p>
                         <br>
 
-                        <p>{{ product.content }}</p> -->
+                        <p>{{ product.product_content }}</p>
                     </div>
 
                 </div>
-            <!-- {% endfor %} -->
+            {% endfor %}
         </div>
     </div>
    
 </div>
-<!-- end wrapper -->
+
 
 {% endblock %}

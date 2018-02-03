@@ -14,7 +14,21 @@ class Metatag():
 	keywords = 'dress, skjorte, brudgom dress, smoking, skreddersydd dress, skreddersydd skjorte, bryllup, kjole & hvitt, livkjole, sjakett, brudgom vest, sko, slips, sløyfe, mansjettknapper, dress guide, dress tips, bryllups tips'
 	page_topic = 'dress, skjorte, brudgom antrekk, smoking, skreddersydd dress, sko, slips, sløyfe, mansjettknapper'
 
-
+# to get previous and next objects from QuerySet
+def get_prev_and_next_items(target, items):
+    
+    found = False
+    prev = None
+    next = None
+    for item in items:
+        if found:
+            next = item
+            break
+        if item.id == target.id:
+            found = True
+            continue
+        prev = item
+    return (prev, next)
 
 
 def index(request):
@@ -78,10 +92,17 @@ def detail(request, product_type, product_name):
 	product_model = apps.get_model('mysite', product_type.capitalize())
 	try:
 		product = product_model.objects.get(product_name=product_name)
+
+		# .filter for multiple objects
+		product_gallery = product_model.objects.filter(product_color=product.product_color)
+		
 	except Dress.DoesNotExist:
 		return HttpResponseNotFound('<h1>Cant find product in database</h1><p>   ***might have to return render instead</p>')
-	
-	return render(request, 'mysite/detail.html', {'metatag':metatag, 'product':product})
+
+	pre_and_next = get_prev_and_next_items(product, product_gallery)
+	prev_product = pre_and_next[0]
+	next_product = pre_and_next[1]
+	return render(request, 'mysite/detail.html', {'metatag':metatag, 'product':product, 'product_gallery':product_gallery, 'prev_product':prev_product, 'next_product':next_product})
 
 # collection's model contains 		type_of_collection, collection_content, collection_image.
 # collection's template requires 	collection's image, collection's content, callection_gallery?, matatag? 
