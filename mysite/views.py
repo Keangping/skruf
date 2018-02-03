@@ -5,10 +5,13 @@ from django.http import HttpResponseNotFound
 # for database model
 from .models import Collection, Tip, Dress_Guide, Dressen_Sitte
 from .models import Dress, Stoff, Brudgom, Skjorte, Sko, Smoking, Slips, Sløyfe, Mansjettknapper
-from .models import News_Image
+from .models import News_Image, Index_Content
 
 # for apps.get_model('app_name', 'model_name')
 from django.apps import apps
+
+# In index(request):, for combine result of 3 querysets.
+from itertools import chain
 
 # should be set up like dictionary in saperate file.
 class Metatag():
@@ -35,8 +38,17 @@ def get_prev_and_next_items(target, items):
 
 def index(request):
 	metatag = Metatag()
+	# slide images & index content
 	news_images = News_Image.objects.all()
-	return render(request, 'mysite/index.html', {'metatag':metatag, 'news_images':news_images})
+	index_content = Index_Content.objects.all().first()
+
+	# gallery, 5 from dress, smoking, brudgom's db
+	dress = Dress.objects.all()[:5]
+	brudgom = Brudgom.objects.all()[:5]
+	smoking = Smoking.objects.all()[:5]
+	index_gallery = list(chain(dress, brudgom, smoking))
+
+	return render(request, 'mysite/index.html', {'metatag':metatag, 'news_images':news_images, 'index_content':index_content, 'index_gallery':index_gallery})
 
 def contact(request):
 	metatag = Metatag()
@@ -48,10 +60,10 @@ def contact(request):
 
 def tips(request):
 	metatag = Metatag()
-	metatag.title = 'BRIZ - 10 tips til ditt bryllup'
-	metatag.description = ''
-	metatag.keywords = ''
-	metatag.page_topic = ''
+	metatag.title = 'BRIZ - 10 tips for ditt perfekte bryllup'
+	metatag.description = 'Gode tips og ideer til ditt perfekte bryllup'
+	metatag.keywords = 'tips, perfekte, bryllup, bryllup planlegging, råd'
+	metatag.page_topic = 'tips, bryllup'
 
 	tips = Tip.objects.all()
 	if not tips:
@@ -61,10 +73,10 @@ def tips(request):
 
 def dressen_sitte(request):
 	metatag = Metatag()
-	metatag.title = 'BRIZ - 10 tips til ditt bryllup'
-	metatag.description = ''
-	metatag.keywords = ''
-	metatag.page_topic = ''
+	metatag.title = 'Dressekspert - Slik skal dressen sitte'
+	metatag.description = 'Slik skal dressen sitte – Beste dresstips'
+	metatag.keywords = 'Slik skal dressen sitte, Slik finner du den perfekte dressen, Tips til å kjøpe dress, Beste dresstips noensinne, Julebord, 17 mai, bryllup'
+	metatag.page_topic = 'Slik skal dressen sitte, dress guide'
 
 	dressen_sittes = Dressen_Sitte.objects.all()
 	if not dressen_sittes:
@@ -74,10 +86,10 @@ def dressen_sitte(request):
 
 def dress_guide(request):
 	metatag = Metatag()
-	metatag.title = 'BRIZ - 10 tips til ditt bryllup'
-	metatag.description = ''
-	metatag.keywords = ''
-	metatag.page_topic = ''
+	metatag.title = 'Dressekspert gir sine beste tips – Norges bestes Dress guide'
+	metatag.description = 'Norges beste Dress guide'
+	metatag.keywords = 'Norges beste Dress guide, for menn, Kan du disse dressreglene, Dette må du vite når du skal kjøpe dress, Dressekspert gir sine beste tips, Julebord, 17 mai, Bryllup'
+	metatag.page_topic = 'Dress guide'
 
 	dress_guides = Dress_Guide.objects.all()
 	if not dress_guides:
@@ -86,11 +98,6 @@ def dress_guide(request):
 	return render(request, 'mysite/dress_guide.html', {'metatag':metatag, 'dress_guides':dress_guides})
 
 def detail(request, product_type, product_name):
-	metatag = Metatag()
-	metatag.title = 'BRIZ - 10 tips til ditt bryllup'
-	metatag.description = ''
-	metatag.keywords = ''
-	metatag.page_topic = ''
 
 	product_model = apps.get_model('mysite', product_type.capitalize())
 	try:
@@ -102,6 +109,12 @@ def detail(request, product_type, product_name):
 	except Dress.DoesNotExist:
 		return HttpResponseNotFound('<h1>Cant find product in database</h1><p>   ***might have to return render instead</p>')
 
+	metatag = Metatag()
+	metatag.title = product.product_description
+	metatag.description = product.product_description
+	metatag.keywords = product.product_keyword
+	metatag.page_topic = product.product_type + " " + product.product_color
+
 	pre_and_next = get_prev_and_next_items(product, product_gallery)
 	prev_product = pre_and_next[0]
 	next_product = pre_and_next[1]
@@ -111,10 +124,10 @@ def detail(request, product_type, product_name):
 # collection's template requires 	collection's image, collection's content, callection_gallery?, matatag? 
 def collection(request, collection_type):
 	metatag = Metatag()
-	metatag.title = 'BRIZ - 10 tips til ditt bryllup'
-	metatag.description = ''
-	metatag.keywords = ''
-	metatag.page_topic = ''
+	metatag.title = 'BRIZ - Dress i beste kvalitet til folkelige priser'
+	metatag.description = 'BRIZ of Norway - Vi lager dress av beste kvalitet til folkelige priser. Som de eneste i Norge produserer vi dress som er tilpasset din kropp og dine ønsker. Ditt design - vår jobb.'
+	metatag.keywords = 'dress, brudgom dress, skreddersydd dress, bryllup dress, slim fit dress'
+	metatag.page_topic = collection_type
 	
 	# for /skreddersydd with collection_type = 'skreddersydd', need to change for collection database.
 	if collection_type == 'skreddersydd':

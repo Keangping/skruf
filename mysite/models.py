@@ -40,6 +40,12 @@ class News_Image(models.Model):
 	def __str__(self):
 		return self.news_headline
 
+class Index_Content(models.Model):
+	index_content = models.TextField(max_length=10000)
+
+	def __str__(self):
+		return "This is where you edit content of index.html"
+
 BLOG_HEADLINE_MAX_LENGTH = 100
 BLOG_CONTENT_MAX_LENGTH = 3000
 

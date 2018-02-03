@@ -43,7 +43,7 @@
     <!-- index content -->
     <div class="index-content">
         <div class="index-content-text">
-            <!-- {{ indexContent.content|safe }} -->
+            {{ index_content.index_content|safe }}
         </div>
 
     </div>
@@ -51,18 +51,18 @@
     
     <div class="index-gallery">
         <div class="index-gallery-image">
-            {% for indexProduct in indexProducts %}
+            {% for product in index_gallery %}
                 <div class="image-element">
                     <div class="image-element-1">
-                        <a href="{% url 'product:detail' indexProduct.product_type indexProduct.id %}">
-                            <img class="img-rounded" src="{{ indexProduct.image.url }}"
+                        <a href="{% url 'mysite:detail' product_type=product.product_type product_name=product.product_name %}">
+                            <img class="img-rounded" src="{{ product.product_image.url }}"
                                  alt="...">
                         </a>
                     </div>
                     <div class="image-element-2">
-                        <p>{{ indexProduct.title }}</p>
+                        <p>{{ product.product_title }}</p>
                         <br>
-                        <p>{{ indexProduct.description }}</p>
+                        <p>{{ product.product_description }}</p>
                     </div>
 
                 </div>
