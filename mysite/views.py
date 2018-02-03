@@ -2,7 +2,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseNotFound
 
-from .models import Collection, Dress, Tip, Dressen_Sitte, Dress_Guide
+from .models import Collection, Dress, Tip, Dressen_Sitte, Dress_Guide, Stoff
+
+# for apps.get_model('app_name', 'model_name')
+from django.apps import apps
 
 # should be set up like dictionary in saperate file.
 class Metatag():
@@ -65,15 +68,20 @@ def dress_guide(request):
 	
 	return render(request, 'mysite/dress_guide.html', {'metatag':metatag, 'dress_guides':dress_guides})
 
-def detail(request):
+def detail(request, product_type, product_name):
 	metatag = Metatag()
 	metatag.title = 'BRIZ - 10 tips til ditt bryllup'
 	metatag.description = ''
 	metatag.keywords = ''
 	metatag.page_topic = ''
-	product = Dress.objects.get(product_name="briz-navy-blå")
-	print(product)
-	return render(request, 'mysite/detail.html', {'metatag':metatag, 'product': product})
+
+	product_model = apps.get_model('mysite', product_type.capitalize())
+	try:
+		product = product_model.objects.get(product_name=product_name)
+	except Dress.DoesNotExist:
+		return HttpResponseNotFound('<h1>Cant find product in database</h1><p>   ***might have to return render instead</p>')
+	
+	return render(request, 'mysite/detail.html', {'metatag':metatag, 'product':product})
 
 # collection's model contains 		type_of_collection, collection_content, collection_image.
 # collection's template requires 	collection's image, collection's content, callection_gallery?, matatag? 
@@ -83,15 +91,28 @@ def collection(request, collection_type):
 	metatag.description = ''
 	metatag.keywords = ''
 	metatag.page_topic = ''
+	
+	# for /skreddersydd with collection_type = 'skreddersydd', need to change for collection database.
+	if collection_type == 'skreddersydd':
+		collection_type = 'stoff'
+	
 	try:
-		# for /skreddersydd with collection_type = 'skreddersydd', need to change for collection database.
-		if collection_type == 'skreddersydd':
-			collection_type = 'stoff'
-
 		collection = Collection.objects.get(type_of_collection=collection_type)
-		# collection_gallery = 
 	except Collection.DoesNotExist:
 		return HttpResponseNotFound('<h1>Cant find collection in database</h1><p>   ***might have to return render instead</p>')
 
-	print(collection)
-	return render(request, 'mysite/collection.html', {'metatag':metatag, 'collection':collection})
+	# apps.get_model('app_name', 'model_name')
+	product_model = apps.get_model('mysite', collection_type.capitalize())
+	collection_gallery = product_model.objects.all()
+	if not collection_gallery:
+		return HttpResponseNotFound('<h1>Cant find collection_gallery in database</h1><p>   ***might have to return render instead</p>')
+	
+	return render(request, 'mysite/collection.html', {'metatag':metatag, 'collection':collection, 'collection_gallery':collection_gallery})
+
+
+
+
+
+
+
+

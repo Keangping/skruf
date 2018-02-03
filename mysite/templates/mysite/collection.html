@@ -48,24 +48,24 @@
 
     <div class="product-gallery">
         <div class="product-gallery-image">
-            <!-- {% for product in gallery %} -->
+            {% for product in collection_gallery %}
                 <div class="image-element">
                     <div class="image-element-1">
-                        <a href="#">
+                        <a href="{% url 'mysite:detail' product_type=product.product_type product_name=product.product_name %}">
                             <img class="img-rounded"
-                                 src="#"
+                                 src="{{ product.product_image.url }}"
                                  alt="..." />
                         </a>
                     </div>
                     <div class="image-element-2">
-                        <p>This is product title</p>
+                        <p>{{ product.product_description }}</p>
                         <br>
 
-                        <p>This is product description</p>
+                        <p>{{ product.product_gallery_content }}</p>
                     </div>
 
                 </div>
-            <!-- {% endfor %} -->
+            {% endfor %}
         </div>
     </div>
    

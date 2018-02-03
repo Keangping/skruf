@@ -90,6 +90,21 @@ class Dress(models.Model):
 	# for detail's gallery to get the same type of color to show, **unique
 	product_color			= models.CharField(max_length=PRODUCT_COLOR_MAX_LENGTH, choices=PRODUCT_COLOR_CHOICES)
 
+	def __str__(self):
+		return self.product_type + " Name: " + self.product_name
+
+class Stoff(models.Model):
+	product_name			= models.CharField(max_length=PRODUCT_NAME_MAX_LENGTH, unique=True)
+	product_description		= models.CharField(max_length=PRODUCT_DESCRIPTION_MAX_LENGTH)
+	product_content			= models.TextField(max_length=PRODUCT_CONTENT_MAX_LENGTH)
+	product_type 			= models.CharField(max_length=PRODUCT_TYPE_MAX_LENGTH, choices=PRODUCT_TYPE_CHOICES)
+	product_image			= models.FileField()
+	product_gallery_content = models.TextField(max_length=PRODUCT_GALLERY_CONTENT_MAX_LENGTH)
+	product_keyword			= models.CharField(max_length=PRODUCT_KEYWORD_MAX_LENGTH)
+	product_color			= models.CharField(max_length=PRODUCT_COLOR_MAX_LENGTH, choices=PRODUCT_COLOR_CHOICES)
+
+	def __str__(self):
+		return self.product_type + " Name: " + self.product_name
 
 class Collection(models.Model):
 	type_of_collection 	= models.CharField(max_length=PRODUCT_TYPE_MAX_LENGTH, choices=PRODUCT_TYPE_CHOICES)
