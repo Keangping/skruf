@@ -2,8 +2,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseNotFound
 
-from .models import Collection, Dress
+from .models import Collection, Dress, Tip, Dressen_Sitte, Dress_Guide
 
+# should be set up like dictionary in saperate file.
 class Metatag():
 	title = 'BRIZ - Beste kvalitet til folkelige priser'
 	description = 'BRIZ of Norway - Vi lager klær av beste kvalitet til folkelige priser. Som de eneste i Norge produserer vi dress og brudgom antrekk som er tilpasset din kropp og dine ønsker. Ditt design - vår jobb.'
@@ -31,7 +32,12 @@ def tips(request):
 	metatag.description = ''
 	metatag.keywords = ''
 	metatag.page_topic = ''
-	return render(request, 'mysite/tips.html', {'metatag':metatag})
+
+	tips = Tip.objects.all()
+	if not tips:
+		return HttpResponseNotFound('<h1>Cant find tip in database</h1><p>   ***might have to return render instead</p>')
+
+	return render(request, 'mysite/tips.html', {'metatag':metatag, 'tips':tips})
 
 def dressen_sitte(request):
 	metatag = Metatag()
@@ -39,7 +45,12 @@ def dressen_sitte(request):
 	metatag.description = ''
 	metatag.keywords = ''
 	metatag.page_topic = ''
-	return render(request, 'mysite/dressen_sitte.html', {'metatag':metatag})
+
+	dressen_sittes = Dressen_Sitte.objects.all()
+	if not dressen_sittes:
+		return HttpResponseNotFound('<h1>Cant find dressen_sitte in database</h1><p>   ***might have to return render instead</p>')
+
+	return render(request, 'mysite/dressen_sitte.html', {'metatag':metatag, 'dressen_sittes':dressen_sittes})
 
 def dress_guide(request):
 	metatag = Metatag()
@@ -47,7 +58,12 @@ def dress_guide(request):
 	metatag.description = ''
 	metatag.keywords = ''
 	metatag.page_topic = ''
-	return render(request, 'mysite/dress_guide.html', {'metatag':metatag})
+
+	dress_guides = Dress_Guide.objects.all()
+	if not dress_guides:
+		return HttpResponseNotFound('<h1>Cant find dress_guide in database</h1><p>   ***might have to return render instead</p>')
+	
+	return render(request, 'mysite/dress_guide.html', {'metatag':metatag, 'dress_guides':dress_guides})
 
 def detail(request):
 	metatag = Metatag()
@@ -78,4 +94,4 @@ def collection(request, collection_type):
 		return HttpResponseNotFound('<h1>Cant find collection in database</h1><p>   ***might have to return render instead</p>')
 
 	print(collection)
-	return render(request, 'mysite/collection.html', {'metatag':metatag,, 'collection':collection})
+	return render(request, 'mysite/collection.html', {'metatag':metatag, 'collection':collection})

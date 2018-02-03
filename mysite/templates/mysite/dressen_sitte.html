@@ -1,22 +1,20 @@
 {% extends 'mysite/base.html' %}
 
 {% block body %}
+
 <div class="blog-wrapper">
-
         <div class="blog-news">
-
+    		{% for dressen_sitte in dressen_sittes %}
                 <div class="blog-news-image">
-                    <img src="#" alt="">
+                    <img src="{{ dressen_sitte.dressen_sitte_image.url }}" alt="">
                 </div>
 
                 <div class="blog-content-text">
-                    <h1>This is headline</h1>
-                    <p>this is content</p>     
+                    <h1>{{ dressen_sitte.dressen_sitte_headline }}</h1>
+                    <p>{{ dressen_sitte.dressen_sitte_content }}</p> 
+                       
                 </div>
-
+            {% endfor %}
         </div>      
-
-        
-
 </div>
 {% endblock %}

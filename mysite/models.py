@@ -31,13 +31,32 @@ PRODUCT_COLOR_CHOICES = (
 
 )
 
+BLOG_HEADLINE_MAX_LENGTH = 100
+BLOG_CONTENT_MAX_LENGTH = 3000
+
 class Tip(models.Model):
-	# tip_headline	= 
-	# tip_image		=
-	# tip_content		=
+	tip_headline	= models.CharField(max_length=BLOG_HEADLINE_MAX_LENGTH)
+	tip_image		= models.FileField()
+	tip_content		= models.TextField(max_length=BLOG_CONTENT_MAX_LENGTH)
 
 	def __str__(self):
 		return self.tip_headline
+
+class Dress_Guide(models.Model):
+	dress_guide_headline	= models.CharField(max_length=BLOG_HEADLINE_MAX_LENGTH)
+	dress_guide_image		= models.FileField()
+	dress_guide_content		= models.TextField(max_length=BLOG_CONTENT_MAX_LENGTH)
+
+	def __str__(self):
+		return self.dress_guide_headline
+
+class Dressen_Sitte(models.Model):
+	dressen_sitte_headline	= models.CharField(max_length=BLOG_HEADLINE_MAX_LENGTH)
+	dressen_sitte_image		= models.FileField()
+	dressen_sitte_content	= models.TextField(max_length=BLOG_CONTENT_MAX_LENGTH)
+
+	def __str__(self):
+		return self.dressen_sitte_headline
 
 PRODUCT_TYPE_MAX_LENGTH = 20
 PRODUCT_COLOR_MAX_LENGTH = 20
