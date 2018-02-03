@@ -1,8 +1,20 @@
 from django.contrib import admin
 
-from .models import Collection, Dress, Tip, Stoff
+from .models import Collection, Tip, Dress_Guide, Dressen_Sitte
+from .models import Dress, Stoff, Brudgom, Skjorte, Sko, Smoking, Slips, Sløyfe, Mansjettknapper
 
 admin.site.register(Collection)
-admin.site.register(Dress)
+
 admin.site.register(Tip)
+admin.site.register(Dress_Guide)
+admin.site.register(Dressen_Sitte)
+
 admin.site.register(Stoff)
+admin.site.register(Dress)
+admin.site.register(Brudgom)
+admin.site.register(Skjorte)
+admin.site.register(Sko)
+admin.site.register(Smoking)
+admin.site.register(Slips)
+admin.site.register(Sløyfe)
+admin.site.register(Mansjettknapper)

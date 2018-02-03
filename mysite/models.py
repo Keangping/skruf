@@ -4,14 +4,14 @@ from django.db import models
 
 PRODUCT_TYPE_CHOICES = (
 	('dress', 'dress'),
+	('stoff', 'stoff'),
 	('brudgom', 'brudgom'),
 	('skjorte', 'skjorte'),
 	('sko', 'sko'),
 	('smoking', 'smoking'),
 	('slips', 'slips'),
-	('mansjettknapper', 'mansjettknapper'),
 	('sløyfe', 'sløyfe'),
-	('stoff', 'stoff'),
+	('mansjettknapper', 'mansjettknapper'),
 )
 
 PRODUCT_COLOR_CHOICES = (
@@ -94,6 +94,97 @@ class Dress(models.Model):
 		return self.product_type + " Name: " + self.product_name
 
 class Stoff(models.Model):
+	product_name			= models.CharField(max_length=PRODUCT_NAME_MAX_LENGTH, unique=True)
+	product_description		= models.CharField(max_length=PRODUCT_DESCRIPTION_MAX_LENGTH)
+	product_content			= models.TextField(max_length=PRODUCT_CONTENT_MAX_LENGTH)
+	product_type 			= models.CharField(max_length=PRODUCT_TYPE_MAX_LENGTH, choices=PRODUCT_TYPE_CHOICES)
+	product_image			= models.FileField()
+	product_gallery_content = models.TextField(max_length=PRODUCT_GALLERY_CONTENT_MAX_LENGTH)
+	product_keyword			= models.CharField(max_length=PRODUCT_KEYWORD_MAX_LENGTH)
+	product_color			= models.CharField(max_length=PRODUCT_COLOR_MAX_LENGTH, choices=PRODUCT_COLOR_CHOICES)
+
+	def __str__(self):
+		return self.product_type + " Name: " + self.product_name
+
+class Brudgom(models.Model):
+	product_name			= models.CharField(max_length=PRODUCT_NAME_MAX_LENGTH, unique=True)
+	product_description		= models.CharField(max_length=PRODUCT_DESCRIPTION_MAX_LENGTH)
+	product_content			= models.TextField(max_length=PRODUCT_CONTENT_MAX_LENGTH)
+	product_type 			= models.CharField(max_length=PRODUCT_TYPE_MAX_LENGTH, choices=PRODUCT_TYPE_CHOICES)
+	product_image			= models.FileField()
+	product_gallery_content = models.TextField(max_length=PRODUCT_GALLERY_CONTENT_MAX_LENGTH)
+	product_keyword			= models.CharField(max_length=PRODUCT_KEYWORD_MAX_LENGTH)
+	product_color			= models.CharField(max_length=PRODUCT_COLOR_MAX_LENGTH, choices=PRODUCT_COLOR_CHOICES)
+
+	def __str__(self):
+		return self.product_type + " Name: " + self.product_name
+
+class Skjorte(models.Model):
+	product_name			= models.CharField(max_length=PRODUCT_NAME_MAX_LENGTH, unique=True)
+	product_description		= models.CharField(max_length=PRODUCT_DESCRIPTION_MAX_LENGTH)
+	product_content			= models.TextField(max_length=PRODUCT_CONTENT_MAX_LENGTH)
+	product_type 			= models.CharField(max_length=PRODUCT_TYPE_MAX_LENGTH, choices=PRODUCT_TYPE_CHOICES)
+	product_image			= models.FileField()
+	product_gallery_content = models.TextField(max_length=PRODUCT_GALLERY_CONTENT_MAX_LENGTH)
+	product_keyword			= models.CharField(max_length=PRODUCT_KEYWORD_MAX_LENGTH)
+	product_color			= models.CharField(max_length=PRODUCT_COLOR_MAX_LENGTH, choices=PRODUCT_COLOR_CHOICES)
+
+	def __str__(self):
+		return self.product_type + " Name: " + self.product_name
+
+class Sko(models.Model):
+	product_name			= models.CharField(max_length=PRODUCT_NAME_MAX_LENGTH, unique=True)
+	product_description		= models.CharField(max_length=PRODUCT_DESCRIPTION_MAX_LENGTH)
+	product_content			= models.TextField(max_length=PRODUCT_CONTENT_MAX_LENGTH)
+	product_type 			= models.CharField(max_length=PRODUCT_TYPE_MAX_LENGTH, choices=PRODUCT_TYPE_CHOICES)
+	product_image			= models.FileField()
+	product_gallery_content = models.TextField(max_length=PRODUCT_GALLERY_CONTENT_MAX_LENGTH)
+	product_keyword			= models.CharField(max_length=PRODUCT_KEYWORD_MAX_LENGTH)
+	product_color			= models.CharField(max_length=PRODUCT_COLOR_MAX_LENGTH, choices=PRODUCT_COLOR_CHOICES)
+
+	def __str__(self):
+		return self.product_type + " Name: " + self.product_name
+
+class Smoking(models.Model):
+	product_name			= models.CharField(max_length=PRODUCT_NAME_MAX_LENGTH, unique=True)
+	product_description		= models.CharField(max_length=PRODUCT_DESCRIPTION_MAX_LENGTH)
+	product_content			= models.TextField(max_length=PRODUCT_CONTENT_MAX_LENGTH)
+	product_type 			= models.CharField(max_length=PRODUCT_TYPE_MAX_LENGTH, choices=PRODUCT_TYPE_CHOICES)
+	product_image			= models.FileField()
+	product_gallery_content = models.TextField(max_length=PRODUCT_GALLERY_CONTENT_MAX_LENGTH)
+	product_keyword			= models.CharField(max_length=PRODUCT_KEYWORD_MAX_LENGTH)
+	product_color			= models.CharField(max_length=PRODUCT_COLOR_MAX_LENGTH, choices=PRODUCT_COLOR_CHOICES)
+
+	def __str__(self):
+		return self.product_type + " Name: " + self.product_name
+
+class Slips(models.Model):
+	product_name			= models.CharField(max_length=PRODUCT_NAME_MAX_LENGTH, unique=True)
+	product_description		= models.CharField(max_length=PRODUCT_DESCRIPTION_MAX_LENGTH)
+	product_content			= models.TextField(max_length=PRODUCT_CONTENT_MAX_LENGTH)
+	product_type 			= models.CharField(max_length=PRODUCT_TYPE_MAX_LENGTH, choices=PRODUCT_TYPE_CHOICES)
+	product_image			= models.FileField()
+	product_gallery_content = models.TextField(max_length=PRODUCT_GALLERY_CONTENT_MAX_LENGTH)
+	product_keyword			= models.CharField(max_length=PRODUCT_KEYWORD_MAX_LENGTH)
+	product_color			= models.CharField(max_length=PRODUCT_COLOR_MAX_LENGTH, choices=PRODUCT_COLOR_CHOICES)
+
+	def __str__(self):
+		return self.product_type + " Name: " + self.product_name
+
+class Sløyfe(models.Model):
+	product_name			= models.CharField(max_length=PRODUCT_NAME_MAX_LENGTH, unique=True)
+	product_description		= models.CharField(max_length=PRODUCT_DESCRIPTION_MAX_LENGTH)
+	product_content			= models.TextField(max_length=PRODUCT_CONTENT_MAX_LENGTH)
+	product_type 			= models.CharField(max_length=PRODUCT_TYPE_MAX_LENGTH, choices=PRODUCT_TYPE_CHOICES)
+	product_image			= models.FileField()
+	product_gallery_content = models.TextField(max_length=PRODUCT_GALLERY_CONTENT_MAX_LENGTH)
+	product_keyword			= models.CharField(max_length=PRODUCT_KEYWORD_MAX_LENGTH)
+	product_color			= models.CharField(max_length=PRODUCT_COLOR_MAX_LENGTH, choices=PRODUCT_COLOR_CHOICES)
+
+	def __str__(self):
+		return self.product_type + " Name: " + self.product_name
+
+class Mansjettknapper(models.Model):
 	product_name			= models.CharField(max_length=PRODUCT_NAME_MAX_LENGTH, unique=True)
 	product_description		= models.CharField(max_length=PRODUCT_DESCRIPTION_MAX_LENGTH)
 	product_content			= models.TextField(max_length=PRODUCT_CONTENT_MAX_LENGTH)

@@ -2,7 +2,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseNotFound
 
-from .models import Collection, Dress, Tip, Dressen_Sitte, Dress_Guide, Stoff
+# for database model
+from .models import Collection, Tip, Dress_Guide, Dressen_Sitte
+from .models import Dress, Stoff, Brudgom, Skjorte, Sko, Smoking, Slips, Sløyfe, Mansjettknapper
 
 # for apps.get_model('app_name', 'model_name')
 from django.apps import apps
