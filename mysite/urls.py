@@ -23,6 +23,7 @@ urlpatterns = [
 	url(r'^detail/$', views.detail, name='detail'),
 
 	# /<collection_type>, /dress /skjorte
+	# /skreddersydd is here
 	url(r'^(?P<collection_type>[a-zA_Z]+)/$', views.collection, name='collection'),
 
 

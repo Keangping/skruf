@@ -29,6 +29,9 @@ def detail(request):
 # collection's template requires 	collection's image, collection's content, callection_gallery?, matatag? 
 def collection(request, collection_type):
 	try:
+		if collection_type == 'skreddersydd':
+			collection_type = 'stoff'
+		print(collection_type)
 		collection = Collection.objects.get(type_of_collection=collection_type)
 		# collection_gallery = 
 	except Collection.DoesNotExist:

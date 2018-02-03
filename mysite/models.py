@@ -10,7 +10,8 @@ PRODUCT_TYPE_CHOICES = (
 	('smoking', 'smoking'),
 	('slips', 'slips'),
 	('mansjettknapper', 'mansjettknapper'),
-	('sløyfe', 'sløyfe')
+	('sløyfe', 'sløyfe'),
+	('stoff', 'stoff'),
 )
 
 PRODUCT_COLOR_CHOICES = (
@@ -30,8 +31,15 @@ PRODUCT_COLOR_CHOICES = (
 
 )
 
-PRODUCT_TYPE_MAX_LENGTH = 20
+class Tip(models.Model):
+	# tip_headline	= 
+	# tip_image		=
+	# tip_content		=
 
+	def __str__(self):
+		return self.tip_headline
+
+PRODUCT_TYPE_MAX_LENGTH = 20
 PRODUCT_COLOR_MAX_LENGTH = 20
 PRODUCT_NAME_MAX_LENGTH = 50
 PRODUCT_DESCRIPTION_MAX_LENGTH = 50
