@@ -31,6 +31,15 @@ PRODUCT_COLOR_CHOICES = (
 
 )
 
+NEWS_HEADLINE_MAX_LENGTH = 100
+
+class News_Image(models.Model):
+	news_image 		= models.FileField()
+	news_headline 	= models.CharField(max_length=NEWS_HEADLINE_MAX_LENGTH)
+
+	def __str__(self):
+		return self.news_headline
+
 BLOG_HEADLINE_MAX_LENGTH = 100
 BLOG_CONTENT_MAX_LENGTH = 3000
 

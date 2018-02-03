@@ -1,5 +1,73 @@
 {% extends 'mysite/base.html' %}
 
 {% block body %}
-	<h1>Hello world2</h1>
+<div class="index-wrapper">
+
+    <!-- newsImage slides -->
+    <div class="index-news">
+        <div class="index-news-image">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                	{% for x in news_images %}
+                		{% if forloop.counter0 == 0 %}
+		                	<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+		                {% else %}
+		                	<li data-target="#carousel-example-generic" data-slide-to="{{ forloop.counter0 }}"></li>
+		            	{% endif %}
+		            {% endfor %}
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    {% for news_image in news_images %}
+                        {% if forloop.counter0 == 0 %}
+                            <div class="item active">
+                        {% else %}
+                            <div class="item">
+                        {% endif %}
+                            	<img src="{{ news_image.news_image.url }}" />
+
+	                            <div class="carousel-caption">
+	                                {{ news_image.news_headline }}
+	                            </div>
+                            </div>
+                    {% endfor %}
+                </div>
+                <!-- end of Wrapper for slides -->
+            </div>
+        </div>
+    </div>
+    <!-- end of newsImage slides -->
+
+    <!-- index content -->
+    <div class="index-content">
+        <div class="index-content-text">
+            <!-- {{ indexContent.content|safe }} -->
+        </div>
+
+    </div>
+    <!-- end of index content -->
+    
+    <div class="index-gallery">
+        <div class="index-gallery-image">
+            {% for indexProduct in indexProducts %}
+                <div class="image-element">
+                    <div class="image-element-1">
+                        <a href="{% url 'product:detail' indexProduct.product_type indexProduct.id %}">
+                            <img class="img-rounded" src="{{ indexProduct.image.url }}"
+                                 alt="...">
+                        </a>
+                    </div>
+                    <div class="image-element-2">
+                        <p>{{ indexProduct.title }}</p>
+                        <br>
+                        <p>{{ indexProduct.description }}</p>
+                    </div>
+
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock %}

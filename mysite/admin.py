@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from .models import Collection, Tip, Dress_Guide, Dressen_Sitte
 from .models import Dress, Stoff, Brudgom, Skjorte, Sko, Smoking, Slips, Sløyfe, Mansjettknapper
+from .models import News_Image
 
 admin.site.register(Collection)
 
@@ -18,3 +19,5 @@ admin.site.register(Smoking)
 admin.site.register(Slips)
 admin.site.register(Sløyfe)
 admin.site.register(Mansjettknapper)
+
+admin.site.register(News_Image)

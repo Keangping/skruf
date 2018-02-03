@@ -5,6 +5,7 @@ from django.http import HttpResponseNotFound
 # for database model
 from .models import Collection, Tip, Dress_Guide, Dressen_Sitte
 from .models import Dress, Stoff, Brudgom, Skjorte, Sko, Smoking, Slips, Sløyfe, Mansjettknapper
+from .models import News_Image
 
 # for apps.get_model('app_name', 'model_name')
 from django.apps import apps
@@ -18,7 +19,6 @@ class Metatag():
 
 # to get previous and next objects from QuerySet
 def get_prev_and_next_items(target, items):
-    
     found = False
     prev = None
     next = None
@@ -35,7 +35,8 @@ def get_prev_and_next_items(target, items):
 
 def index(request):
 	metatag = Metatag()
-	return render(request, 'mysite/index.html', {'metatag':metatag})
+	news_images = News_Image.objects.all()
+	return render(request, 'mysite/index.html', {'metatag':metatag, 'news_images':news_images})
 
 def contact(request):
 	metatag = Metatag()
