@@ -74,7 +74,7 @@ def tips(request):
 def dressen_sitte(request):
 	metatag = Metatag()
 	metatag.title = 'Dressekspert - Slik skal dressen sitte'
-	metatag.description = 'Slik skal dressen sitte – Beste dresstips'
+	metatag.description = 'Slik skal dressen sitte – Beste dress tips'
 	metatag.keywords = 'Slik skal dressen sitte, Slik finner du den perfekte dressen, Tips til å kjøpe dress, Beste dresstips noensinne, Julebord, 17 mai, bryllup'
 	metatag.page_topic = 'Slik skal dressen sitte, dress guide'
 
@@ -87,8 +87,8 @@ def dressen_sitte(request):
 def dress_guide(request):
 	metatag = Metatag()
 	metatag.title = 'Dressekspert gir sine beste tips – Norges bestes Dress guide'
-	metatag.description = 'Norges beste Dress guide'
-	metatag.keywords = 'Norges beste Dress guide, for menn, Kan du disse dressreglene, Dette må du vite når du skal kjøpe dress, Dressekspert gir sine beste tips, Julebord, 17 mai, Bryllup'
+	metatag.description = 'Dress guide for menn'
+	metatag.keywords = 'Dress guide for menn, Dress guide, for menn, Kan du disse dressreglene, Dette må du vite når du skal kjøpe dress, Dressekspert gir sine beste tips, Julebord, 17 mai, Bryllup'
 	metatag.page_topic = 'Dress guide'
 
 	dress_guides = Dress_Guide.objects.all()
