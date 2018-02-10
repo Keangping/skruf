@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-
+from .secrets import *
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -20,7 +20,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '2$q8893bucgcp88a*43__)-7+ka*pm-i&8b!xv=^j%wnfno!_h'
+# 2$q8893bucgcp88a*43__)-7+ka*pm-i&8b!xv=^j%wnfno!_h'
+
+SECRET_KEY = s_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -77,8 +79,11 @@ WSGI_APPLICATION = 'briz.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'slothslower$briz',
+        'USER': 'slothslower',
+        'PASSWORD': db_pass,
+        'HOST': 'slothslower.mysql.pythonanywhere-services.com',
     }
 }
 
